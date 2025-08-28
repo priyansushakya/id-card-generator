@@ -14,6 +14,8 @@ return new class extends Migration
             $table->string('photo')->nullable(); // Photo path or filename
             $table->string('email', 100)->unique();
             $table->date('date_of_birth')->nullable(); // Date of birth
+            $table->string('address', 255)->nullable(); // Address field
+            $table->string('phone', 20)->nullable(); // Phone number field
             $table->date('issue_date')->nullable();
             $table->date('expiry_date')->nullable();
             $table->timestamps();

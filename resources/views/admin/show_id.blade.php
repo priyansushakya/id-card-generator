@@ -1,54 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ID Card</title>
-    <style>
-        .id-card {
-            width: 350px;
-            height: 200px;
-            border: 2px solid #333;
-            padding: 20px;
-            border-radius: 10px;
-            font-family: Arial, sans-serif;
-            position: relative;
-            background-color: #f9f9f9;
-        }
-        .id-card img {
-            width: 80px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        .id-card h3 {
-            margin: 0;
-            font-size: 20px;
-        }
-        .id-card p {
-            margin: 2px 0;
-            font-size: 14px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ID Card</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body {
+        background: #f0f2f5;
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+        margin: 0;
+    }
+    .id-card {
+        width: 450px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        background-color: #fff;
+        margin-bottom: 20px;
+    }
+    .id-card-header {
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        color: #fff;
+        text-align: center;
+        padding: 15px 0;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .id-card-body {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        align-items: center; /* aligns text vertically to center of photo */
+    }
+    .id-card-photo {
+        flex: 0 0 130px;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 2px solid #ddd;
+        height: 160px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .id-card-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .id-card-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* vertically centers text */
+    }
+    .id-card-details h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+        font-weight: 600;
+    }
+    .id-card-details p {
+        margin: 4px 0;
+        font-size: 14px;
+        color: #555;
+    }
+    .id-card-footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background-color: #f1f3f6;
+        font-size: 13px;
+        color: #333;
+        border-top: 1px solid #ddd;
+    }
+    .print-btn {
+        border-radius: 25px;
+        padding: 10px 40px;
+        font-size: 16px;
+        background: linear-gradient(90deg, #28a745, #218838);
+        border: none;
+        color: #fff;
+        transition: 0.3s;
+    }
+    .print-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(40,167,69,0.5);
+    }
+
+    @media print {
+        body {
+            background: #fff; /* remove page background */
         }
         .print-btn {
-            margin-top: 20px;
+            display: none; /* hide the button while printing */
         }
-    </style>
+        .id-card {
+            box-shadow: none; /* remove shadows for print */
+            border: 1px solid #000; /* optional print border */
+        }
+    }
+</style>
 </head>
 <body>
-<div class="container mt-5">
-    <div class="id-card">
-        <div style="display: flex; gap: 15px;">
-            <img src="{{ asset($user->photo) }}">
-            <div>
-                <h3>{{ $user->name }}</h3>
-                <p><strong>DOB:</strong> {{ $user->date_of_birth }}</p>
-                <p><strong>Email:</strong> {{ $user->email }}</p>
-                <p><strong>Issue:</strong> {{ $user->issue_date }}</p>
-                <p><strong>Expiry:</strong> {{ $user->expiry_date }}</p>
-            </div>
+
+<div class="id-card">
+    <div class="id-card-header">ID Card</div>
+    <div class="id-card-body">
+        <div class="id-card-photo">
+            <img src="{{ asset($user->photo) }}" alt="Photo">
+        </div>
+        <div class="id-card-details">
+            <h3>{{ $user->name }}</h3>
+            <p><strong>DOB:</strong> {{ $user->date_of_birth }}</p>
+            <p><strong>Email:</strong> {{ $user->email }}</p>
+            <p><strong>Address:</strong> {{ $user->address }}</p>
+            <p><strong>Phone:</strong> {{ $user->phone }}</p>
         </div>
     </div>
-    <button class="btn btn-success print-btn" onclick="window.print()">Print ID Card</button>
+    <div class="id-card-footer">
+        <span><strong>Issue:</strong> {{ $user->issue_date }}</span>
+        <span><strong>Expiry:</strong> {{ $user->expiry_date }}</span>
+    </div>
 </div>
+
+<button class="btn print-btn" onclick="window.print()">Print ID Card</button>
+
 </body>
 </html>

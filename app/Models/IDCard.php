@@ -12,6 +12,8 @@ class IDCard extends Model
     'name',
     'email',
     'date_of_birth',
+    'address',
+    'phone',
     'issue_date',
     'expiry_date',
     'photo'

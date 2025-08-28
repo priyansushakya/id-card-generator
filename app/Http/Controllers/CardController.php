@@ -17,6 +17,8 @@ class CardController extends Controller
             'name' => 'required|string|max:55',
             'email' => 'required|string|max:255',
             'date_of_birth' => 'required|date|before:today',
+            'address' => 'required|string|max:55',
+            'phone' => 'required|string|regex:/^[0-9]{10}$/', 
             'issue_date' => 'nullable|date|before:today',
             'expiry_date' => 'nullable|date|after:issue_date',
         ]);
