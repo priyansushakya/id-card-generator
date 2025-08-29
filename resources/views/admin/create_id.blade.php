@@ -64,10 +64,16 @@
                 <div class="col-md-6">
                     <label class="form-label">Full Name</label>
                     <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+                    @error('name')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Email</label>
                     <input type="email" name="email" class="form-control" placeholder="Email" required>
+                    @error('email')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
 
@@ -82,6 +88,9 @@
                 <div class="col-md-6">
                     <label class="form-label">Address</label>
                     <input type="text" name="address" class="form-control" placeholder="Address" required>
+                    @error('address')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
 

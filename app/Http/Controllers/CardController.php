@@ -14,13 +14,13 @@ class CardController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:55',
-            'email' => 'required|string|max:255',
-            'date_of_birth' => 'required|date|before:today',
-            'address' => 'required|string|max:55',
+            'name' => 'required|string|max:55|regex:/^[A-Za-z\s]+$/', 
+            'email' => 'required|string|max:255|email', 
+            'date_of_birth' => 'required|date|before:today', 
+            'address' => 'required|string|max:55|regex:/^[A-Za-z0-9\s,.-]+$/', 
             'phone' => 'required|string|regex:/^[0-9]{10}$/', 
-            'issue_date' => 'nullable|date|before:today',
-            'expiry_date' => 'nullable|date|after:issue_date',
+            'issue_date' => 'nullable|date|after:date_of_birth|before:today',
+            'expiry_date' => 'nullable|date|after:issue_date'
         ]);
 
          if ($validator->fails()) {
