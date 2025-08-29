@@ -16,6 +16,38 @@
         flex-direction: column;
         margin: 0;
     }
+
+    /* Container for the card and button */
+    .id-card-wrapper {
+        width: 450px; /* same width as card */
+        display: flex;
+        justify-content: flex-end; /* aligns close button to the right */
+        margin-bottom: 10px; /* space between button and card */
+    }
+
+    .close-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .close-btn:hover {
+        background: #c82333;
+        transform: scale(1.1);
+    }
+
     .id-card {
         width: 450px;
         border-radius: 15px;
@@ -36,7 +68,7 @@
         display: flex;
         padding: 20px;
         gap: 20px;
-        align-items: center; /* aligns text vertically to center of photo */
+        align-items: center;
     }
     .id-card-photo {
         flex: 0 0 130px;
@@ -55,7 +87,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: center; /* vertically centers text */
+        justify-content: center;
     }
     .id-card-details h3 {
         margin: 0;
@@ -93,20 +125,26 @@
 
     @media print {
         body {
-            background: #fff; /* remove page background */
+            background: #fff;
         }
-        .print-btn {
-            display: none; /* hide the button while printing */
+        .print-btn, .close-btn {
+            display: none;
         }
         .id-card {
-            box-shadow: none; /* remove shadows for print */
-            border: 1px solid #000; /* optional print border */
+            box-shadow: none;
+            border: 1px solid #000;
         }
     }
 </style>
 </head>
 <body>
 
+<!-- Close button above the card, right-aligned -->
+<div class="id-card-wrapper">
+    <a href="{{ route('create') }}" class="close-btn">×</a>
+</div>
+
+<!-- ID Card -->
 <div class="id-card">
     <div class="id-card-header">ID Card</div>
     <div class="id-card-body">
@@ -127,6 +165,7 @@
     </div>
 </div>
 
+<!-- Print button -->
 <button class="btn print-btn" onclick="window.print()">Print ID Card</button>
 
 </body>
