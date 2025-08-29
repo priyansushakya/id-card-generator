@@ -1,3 +1,10 @@
 Setup/usage instruction
 
 I have provided my GitHub repository link where my files are stored. First of all, clone the given link in the htdocs folder inside the Xampp. After the files are cloned, open the Xampp then run the MySQL admin and create a new database named "cardgenerator". After the database is created, open the cloned folder into vs code. The first thing u will need to do is to migrate the tables in the database. Use ' php artisan migrate:fresh ' for migrating the table in the database, then the table should be created to store the values. There are few things that needs to be check before running the project i.e. in the .env file, the db_connection is set to sqllite, change that to MySQL, and below that remove the comment (don't delete) and then make the session_driver to file. And when you clone the project from the GitHub, the vendor folder may not be seen. So, just run 'composer install' inside the project folder terminal. Then, to run the project in the terminal of VS code, write 'php artisan serve' then u will get a link. You can simply open it and you are good to go to create id cards dynamically.
+
+## Screenshots
+
+Id Card
+
+![Create](screenshots/Create.png)
+![Id_card](screenshots/Id_card.png)
