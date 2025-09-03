@@ -6,59 +6,81 @@
     <title>Create ID Card</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-    body {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #fdfbfb, #ebedee);
-        font-family: 'Segoe UI', sans-serif;
-    }
-    .form-card {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(8px);
-        border-radius: 20px;
-        padding: 40px;
-        width: 100%;
-        max-width: 800px;
-        color: #333;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    .form-label {
-        font-weight: 600;
-    }
-    .form-control {
-        border-radius: 12px;
-        border: 1px solid #ddd;
-        padding: 10px 15px;
-    }
-    .form-control:focus {
-        box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
-        border-color: #007bff;
-    }
-    .btn-primary {
-        background: linear-gradient(90deg, #007bff, #0056b3);
-        border: none;
-        border-radius: 30px;
-        padding: 12px 40px;
-        font-size: 18px;
-        transition: 0.3s;
-    }
-    .btn-primary:hover {
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.5);
-    }
-    h2 {
-        font-weight: bold;
-        margin-bottom: 30px;
-        text-align: center;
-    }
-</style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fdfbfb, #ebedee);
+            font-family: 'Segoe UI', sans-serif;
+            padding-top: 80px; /* to prevent content hiding behind navbar */
+        }
+        .form-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: auto;
+        }
+        .form-label {
+            font-weight: 600;
+        }
+        .form-control {
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+        }
+        .form-control:focus {
+            box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+            border-color: #007bff;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            border: none;
+            border-radius: 30px;
+            padding: 12px 40px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.5);
+        }
+        h2 {
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Navbar for Admin Panel -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Admin Panel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ route('create') }}">Generate ID</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('layout') }}">View Card Layout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Form Card -->
     <div class="form-card">
         <h2>Create ID Card</h2>
-        <form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
                 <div class="col-md-6">
@@ -130,5 +152,7 @@
             </div>
         </form>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

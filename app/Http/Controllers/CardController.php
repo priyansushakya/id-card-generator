@@ -12,6 +12,21 @@ class CardController extends Controller
         return view('admin.create_id');
     }
 
+    public function layout(){
+        $user = (object)[
+            'photo' => 'storage/images/pic.png', 
+            'name' => 'Ram Bahadur',
+            'address' => 'Pokhara, Nepal',
+            'date_of_birth' => '2000-01-01',
+            'issue_date' => '2025-01-01',
+            'expiry_date' => '2030-01-01',
+            'email' => 'rambahadur@gmail.com',
+            'phone' => '1234567891'
+        ];
+
+        return view('admin.layout', compact('user'));
+    }
+
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:55|regex:/^[A-Za-z\s]+$/', 

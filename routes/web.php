@@ -13,6 +13,7 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register/store', [RegisterController::class, 'store'])->name('register.store');
 
 Route::get('/create', [CardController::class, 'create'])->name('create');
+Route::get('/layout', [CardController::class, 'layout'])->name('layout');
 Route::post('/store', [CardController::class, 'store'])->name('store');
 Route::get('/show/{id}', [CardController::class, 'show'])->name('show');
 
