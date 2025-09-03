@@ -146,25 +146,38 @@
 <body>
 
 <!-- Navbar for Admin Panel -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">Admin Panel</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('create') }}">Generate ID</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('layout') }}">View Card Layout</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Admin Panel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Generate ID -->
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('create') ? 'active' : '' }}" href="{{ route('create') }}">Generate ID</a>
+                    </li>
+
+                    <!-- View Layout -->
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('layout') ? 'active' : '' }}" href="{{ route('layout') }}">View Card Layout</a>
+                    </li>
+
+                    <!-- Logout Button -->
+                    <li class="nav-item ms-3">
+                        <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
 <!-- Close button above the card, right-aligned -->
 <div class="id-card-wrapper">

@@ -4,6 +4,7 @@ use App\Http\Middleware\AuthMiddleware;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
@@ -19,5 +20,6 @@ Route::get('/create', [CardController::class, 'create'])->name('create');
 Route::get('/layout', [CardController::class, 'layout'])->name('layout');
 Route::post('/store', [CardController::class, 'store'])->name('store');
 Route::get('/show/{id}', [CardController::class, 'show'])->name('show');
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 });
 

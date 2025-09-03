@@ -66,11 +66,24 @@
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <!-- Generate ID -->
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('create') }}">Generate ID</a>
+                        <a class="nav-link {{ request()->routeIs('create') ? 'active' : '' }}" href="{{ route('create') }}">Generate ID</a>
                     </li>
+
+                    <!-- View Layout -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('layout') }}">View Card Layout</a>
+                        <a class="nav-link {{ request()->routeIs('layout') ? 'active' : '' }}" href="{{ route('layout') }}">View Card Layout</a>
+                    </li>
+
+                    <!-- Logout Button -->
+                    <li class="nav-item ms-3">
+                        <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Logout
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </div>
