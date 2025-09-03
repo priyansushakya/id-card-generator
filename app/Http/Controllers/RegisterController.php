@@ -23,7 +23,7 @@ class RegisterController extends Controller
             DB::beginTransaction();
 
             $validator = Validator::make($request->all(), [
-                'name' => 'required',
+                'name' => 'required|regex:/^[A-Za-z\s]+$/',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|min:6|confirmed',
             ]);

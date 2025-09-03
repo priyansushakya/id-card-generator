@@ -53,9 +53,7 @@
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" value="{{ old('email') }}" required>
                     @error('email')
-                    <div class="text-danger">
-                        {{ $message }}
-                    </div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
@@ -67,9 +65,7 @@
                         </button>
                     </div>
                     @error('password')
-                    <div class="text-danger">
-                        {{ $message }}
-                    </div>
+                    <div class="text-danger"> {{ $message }}</div>
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>

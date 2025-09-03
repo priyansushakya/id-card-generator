@@ -34,7 +34,7 @@ class LoginController extends Controller
                 return redirect()->route('create');
             } else {
                 toastr()->error('Invalid credentials given.');
-                return redirect()->back()->withInput($request->input());
+                return redirect()->back()->withInput($request->input())->withErrors($validator->errors());
             }
         } catch (Throwable $e) {
             toastr()->error($e->getMessage());

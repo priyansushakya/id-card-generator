@@ -30,7 +30,7 @@ class CardController extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:55|regex:/^[A-Za-z\s]+$/', 
-            'email' => 'required|string|max:255|email', 
+            'email' => 'required|string|max:255|email|unique:id_cards,email', 
             'date_of_birth' => 'required|date|before:today', 
             'address' => 'required|string|max:55|regex:/^[A-Za-z0-9\s,.-]+$/', 
             'phone' => 'required|string|regex:/^[0-9]{10}$/', 
@@ -59,6 +59,7 @@ class CardController extends Controller
 
     public function show($id) {
         $user = IDCard::findOrFail($id);
+        toastr()->success('Id Card Generated.');
         return view('admin.show_id', compact('user'));
     }
 }
